@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+interface abc {
+    interface pqr {}
+}
+
 public class ArrayListPractical {
     String a;
     void ArrayListPractical() {
@@ -81,6 +85,16 @@ public class ArrayListPractical {
         // remove if
         list.removeIf(item -> item % 2 == 0);
 
+        List<Integer> list2 = (List<Integer>) ((ArrayList<Integer>) list).clone();
+
+        System.out.println(list.get(0).hashCode());
+        System.out.println(list2.get(0).hashCode());
+
+        list2.set(0, 1);
+        System.out.println(list2);
         System.out.println(list);
+
+        System.out.println(list.get(0).hashCode());
+        System.out.println(list2.get(0).hashCode());
     }
 }
