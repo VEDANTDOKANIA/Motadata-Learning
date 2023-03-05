@@ -1,9 +1,8 @@
 package org.example;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
+import java.lang.reflect.Array;
+import java.util.*;
 
 class Parent {
     public static final int a = 10;
@@ -30,31 +29,86 @@ public class Main{
         System.out.println(a);
     }
 
-    public static void main(String[] args)throws CloneNotSupportedException {
+    static void fun() {
+        fun();
+    }
 
-        Main m = new Main();
-        m.method('a');
+    public static void main(String[] args) {
+
+//        ArrayList<Integer> list = new ArrayList<>();
+//
+//        try {
+//            while (true) {
+//                for (int i = 0; i < 100000;i++) {
+//                    list.add(i);
+//                }
+//                try {
+//                    Thread.sleep(100);
+//                } catch (Exception e) {
+//                    System.out.println("Exception: "+e);
+//                }
+//                for (int i = 0; i < 100000;i++) {
+//                    list.add(i);
+//                }
+//                for (int i = 0; i < 100000;i++) {
+//                    list.add(i);
+//                }
+//                for (int i = 0; i < 100000;i++) {
+//                    list.add(i);
+//                }
+//                for (int i = 0; i < 100000;i++) {
+//                    list.add(i);
+//                }for (int i = 0; i < 100000;i++) {
+//                    list.add(i);
+//                }
+//                for (int i = 0; i < 100000;i++) {
+//                    list.add(i);
+//                }for (int i = 0; i < 100000;i++) {
+//                    list.add(i);
+//                }
+//                for (int i = 0; i < 100000;i++) {
+//                    list.add(i);
+//                }
+//            }
+//        } catch (Throwable t) {
+//            System.out.println(t);
+//        }
+
+
 
 //        Main m = new Main();
 //        Main m1 = (Main) m.clone();
 
-        Child c = new Child();
-        c.method();
-        System.out.println(c.a);
 
-        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
 
-        Iterator iterator = list.iterator();
+//        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
 
-        while (iterator.hasNext()) {
-            Integer val = (Integer) iterator.next();
-//            System.out.println(val);
-            if (val.equals(5)) {
-                System.out.println(val);
-                list.remove(5);
-            }
-        }
+//        try {
+//            throw new OutOfMemoryError();
+//        } catch (OutOfMemoryError s) {
+//            System.out.println("Exception: "+s);
+//        }
 
-        System.out.println(list);
+//        Iterator iterator = list.iterator();
+//
+//        while (iterator.hasNext()) {
+//            Integer val = (Integer) iterator.next();
+////            System.out.println(val);
+//            if (val.equals(5)) {
+//                System.out.println(val);
+//                list.remove(5);
+//            }
+//        }
+//
+//        System.out.println(list);
+
+        ArrayList obj1 = new ArrayList();
+        ArrayList obj2 = new ArrayList();
+        obj1.add("A");
+        obj1.add("B");
+        obj2.add("A");
+        obj2.add("B");
+
+        System.out.println(obj1.equals(obj2));
     }
 }

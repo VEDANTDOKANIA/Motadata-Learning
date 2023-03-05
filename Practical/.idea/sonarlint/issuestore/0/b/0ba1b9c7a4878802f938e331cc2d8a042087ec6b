@@ -1,0 +1,24 @@
+
+J
+java:S3740i"/Provide the parametrized type for this generic.(ˆ™¡†øÿÿÿÿ
+J
+java:S3740i"/Provide the parametrized type for this generic.(ˆ™¡†øÿÿÿÿ
+E
+java:S3740j"/Provide the parametrized type for this generic.(ÅŠ¡æ
+E
+java:S3740j"/Provide the parametrized type for this generic.(ÅŠ¡æ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(€”°Ä
+P
+java:S1118":Add a private constructor to hide the implicit public one.(î’œœ
+S	java:S106
+"9Replace this use of System.out or System.err by a logger.(ÓÆÀúÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(­ŸÅ®
+S	java:S106"9Replace this use of System.out or System.err by a logger.(æ¨¤šøÿÿÿÿ
+Q	java:S125&"<This block of commented-out lines of code should be removed.(†óšù
+V	java:S125O"<This block of commented-out lines of code should be removed.(È÷»Ïüÿÿÿÿ
+Q	java:S125T"<This block of commented-out lines of code should be removed.(½Áâ
+V	java:S125V"<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ
+Q	java:S125\"<This block of commented-out lines of code should be removed.(ºÍ²
+S	java:S106p"9Replace this use of System.out or System.err by a logger.(ªÊñ‰şÿÿÿÿ
+K
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ

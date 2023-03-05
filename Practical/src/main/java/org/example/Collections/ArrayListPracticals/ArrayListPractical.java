@@ -102,7 +102,6 @@ public class ArrayListPractical {
         System.out.println(list.get(0).hashCode());
         System.out.println(list2.get(0).hashCode());
 
-
     }
 }
 
