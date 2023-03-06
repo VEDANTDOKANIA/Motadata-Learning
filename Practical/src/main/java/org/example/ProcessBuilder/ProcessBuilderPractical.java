@@ -18,66 +18,37 @@ public class ProcessBuilderPractical {
     4. Store result inside bufferedReader object
     5. Store result inside Linkedlist object
      */
-    private void getUserInputAndCalculateOutput() throws IOException {
-        BufferedReader fpingBufferedReader = null;
+    private boolean getUserInputAndCalculateOutput(StringBuilder ipInputStringBuilder) throws IOException {
+        BufferedReader fpingErrorBufferedReader = null;
 
         Process process = null;
 
         try {
 
-            var userInputBufferedReader = new BufferedReader(new InputStreamReader(System.in));
+            var ipList = Arrays.stream(ipInputStringBuilder.toString().split(",")).toList();
 
-            System.out.println("Enter an IP Address");
+            process = new ProcessBuilder("fping", "-q", "-c 3", ipInputStringBuilder.toString()).start();
 
-            var sb = new StringBuilder();
+            fpingErrorBufferedReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
 
-            sb.append(userInputBufferedReader.readLine());
+            var result = new StringBuilder(fpingErrorBufferedReader.readLine())
+                    .toString()
+                    .split(":")[1]
+                    .trim();
+            ;
 
-            if (sb.isEmpty()) {
-                // userInputBufferedReader is empty
-                System.out.println("IP address not stored properly");
-            } else {
-                var ipList = Arrays.stream(sb.toString().split(",")).toList();
-
-                process = new ProcessBuilder("fping", sb.toString()).start();
-
-                fpingBufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-
-//                StringBuilder result = new StringBuilder();
-
-//                for (String temResult; (temResult = fpingBufferedReader.readLine()) != null; ) {
-//
-//                    result.append(temResult).append("\n");
-//
-//                }
-
-                var result = new StringBuilder(fpingBufferedReader.readLine());
-
-                if (result.toString().contains("alive")) {
-
-                    // device is discoverable
-
-                    System.out.println("It is reachable");
-
-                } else {
-
-                    // device is unreachable
-
-                    System.out.println("It is not reachable");
-
-                }
+            return result.charAt(16) == result.charAt(18) && result.charAt(20) == '0';
 
 //                System.out.println("Result: "+result);
-            }
         } catch (Exception exception) {
 
             exception.printStackTrace();
 
         } finally {
 
-            if (fpingBufferedReader != null) {
+            if (fpingErrorBufferedReader != null) {
 
-                fpingBufferedReader.close();
+                fpingErrorBufferedReader.close();
 
             }
 
@@ -86,9 +57,13 @@ public class ProcessBuilderPractical {
                 process.destroy();
 
             }
+
         }
 
+        return true;
+
     }
+
     public static void main(String[] args) throws IOException {
 //        Process process = new ProcessBuilder("ping", "-c 3", "google.com").start();
 //
@@ -103,7 +78,32 @@ public class ProcessBuilderPractical {
 //
 //        System.out.println(sb);
 
+        var userInputBufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Enter an IP Address");
+
+        var ipInputStringBuilder = new StringBuilder();
+
+        ipInputStringBuilder.append(userInputBufferedReader.readLine());
+
+        if (ipInputStringBuilder.isEmpty()) {
+
+            // userInputBufferedReader is empty
+            System.out.println("IP address not stored properly");
+
+            return;
+        }
+
         ProcessBuilderPractical processBuilderPractical = new ProcessBuilderPractical();
-        processBuilderPractical.getUserInputAndCalculateOutput();
+
+        if (processBuilderPractical.getUserInputAndCalculateOutput(ipInputStringBuilder)) {
+
+            System.out.println(ipInputStringBuilder + " -> It is reachable");
+
+        } else {
+
+            System.out.println(ipInputStringBuilder + " -> It is not reachable");
+
+        }
     }
 }
