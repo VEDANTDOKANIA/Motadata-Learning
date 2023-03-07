@@ -35,7 +35,6 @@ public class ProcessBuilderPractical {
                     .toString()
                     .split(":")[1]
                     .trim();
-            ;
 
             return result.charAt(16) == result.charAt(18) && result.charAt(20) == '0';
 
@@ -60,7 +59,7 @@ public class ProcessBuilderPractical {
 
         }
 
-        return true;
+        return false;
 
     }
 
