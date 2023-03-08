@@ -57,7 +57,6 @@ public class StaticSynchronized {
         thread2.start();
 
         thread3.start();
-        
     }
 
 }
