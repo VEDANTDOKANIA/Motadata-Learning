@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
+//SLF4J LOGGING ... 
+//Logger Object 
+//Function start in case of error , proper logging 
 public class ProcessBuilderPractical {
 
     /*
@@ -18,15 +22,21 @@ public class ProcessBuilderPractical {
     4. Store result inside bufferedReader object
     5. Store result inside Linkedlist object
      */
+    //GetPingResponse
     private boolean getUserInputAndCalculateOutput(StringBuilder ipInputStringBuilder) throws IOException {
+        
+        //reader
         BufferedReader fpingErrorBufferedReader = null;
 
         Process process = null;
 
+        // constant .. HypenSeparator "-" NewLineSeparator -"/n"
         try {
 
+            
             var ipList = Arrays.stream(ipInputStringBuilder.toString().split(",")).toList();
 
+            //Why only 3 packets , not 2 not 4 // regex match group 
             process = new ProcessBuilder("fping", "-q", "-c 3", ipInputStringBuilder.toString()).start();
 
             fpingErrorBufferedReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
@@ -41,6 +51,7 @@ public class ProcessBuilderPractical {
 //                System.out.println("Result: "+result);
         } catch (Exception exception) {
 
+            //define limit in length of stack trace
             exception.printStackTrace();
 
         } finally {
@@ -77,12 +88,15 @@ public class ProcessBuilderPractical {
 //
 //        System.out.println(sb);
 
+        //reader
         var userInputBufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("Enter an IP Address");
 
+        //builder
         var ipInputStringBuilder = new StringBuilder();
 
+        //Is valid IP CHeck is remaining
         ipInputStringBuilder.append(userInputBufferedReader.readLine());
 
         if (ipInputStringBuilder.isEmpty()) {
